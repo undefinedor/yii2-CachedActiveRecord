@@ -1,5 +1,5 @@
 {
-  "name": "undefinedor/yii2-CachedActiveRecord",
+  "name": "undefinedor/yii2-cached-active-record",
   "description": "The cached activeRecord for the Yii2 framework",
   "keywords": ["yii2", "ActiveRecord", "extension","cache"],
   "type": "yii2-extension",

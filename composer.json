@@ -1,0 +1,25 @@
+{
+  "name": "undefinedor/yii2-CachedActiveRecord",
+  "description": "The cached activeRecord for the Yii2 framework",
+  "keywords": ["yii2", "ActiveRecord", "extension","cache"],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/undefinedor/yii2-CachedActiveRecord/issues",
+    "source": "https://github.com/undefinedor/yii2-CachedActiveRecord"
+  },
+  "authors": [
+    {
+      "name": "Wang Hao",
+      "email": "1012023498@qq.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": ">=2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "undefinedor\\yii2\\": ""
+    }
+  }
+}

@@ -47,4 +47,108 @@ class CachedActiveQuery extends ActiveQuery
             return parent::all($db);
         });
     }
+
+    /**
+     * Returns the query result as a scalar value.
+     * The value returned will be the first column in the first row of the query results.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given, the `db` application component will be used.
+     * @return string|boolean the value of the first column in the first row of the query result.
+     * False is returned if the query result is empty.
+     */
+    public function scalar($db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db){
+            return parent::scalar($db);
+        });
+    }
+
+    /**
+     * Returns the number of records.
+     * @param string $q the COUNT expression. Defaults to '*'.
+     * Make sure you properly [quote](guide:db-dao#quoting-table-and-column-names) column names in the expression.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given (or null), the `db` application component will be used.
+     * @return integer|string number of records. The result may be a string depending on the
+     * underlying database engine and to support integer values higher than a 32bit PHP integer can handle.
+     */
+    public function count($q = '*', $db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
+            return parent::count($q,$db);
+        });
+    }
+
+    /**
+     * Returns the sum of the specified column values.
+     * @param string $q the column name or expression.
+     * Make sure you properly [quote](guide:db-dao#quoting-table-and-column-names) column names in the expression.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given, the `db` application component will be used.
+     * @return mixed the sum of the specified column values.
+     */
+    public function sum($q, $db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
+            return parent::sum($q,$db);
+        });
+    }
+
+    /**
+     * Returns the average of the specified column values.
+     * @param string $q the column name or expression.
+     * Make sure you properly [quote](guide:db-dao#quoting-table-and-column-names) column names in the expression.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given, the `db` application component will be used.
+     * @return mixed the average of the specified column values.
+     */
+    public function average($q, $db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
+            return parent::average($q,$db);
+        });
+    }
+
+    /**
+     * Returns the minimum of the specified column values.
+     * @param string $q the column name or expression.
+     * Make sure you properly [quote](guide:db-dao#quoting-table-and-column-names) column names in the expression.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given, the `db` application component will be used.
+     * @return mixed the minimum of the specified column values.
+     */
+    public function min($q, $db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
+            return parent::min($q,$db);
+        });
+    }
+
+    /**
+     * Returns the maximum of the specified column values.
+     * @param string $q the column name or expression.
+     * Make sure you properly [quote](guide:db-dao#quoting-table-and-column-names) column names in the expression.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given, the `db` application component will be used.
+     * @return mixed the maximum of the specified column values.
+     */
+    public function max($q, $db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
+            return parent::max($q,$db);
+        });
+    }
+
+    /**
+     * Returns a value indicating whether the query result contains any row of data.
+     * @param Connection $db the database connection used to generate the SQL statement.
+     * If this parameter is not given, the `db` application component will be used.
+     * @return boolean whether the query result contains any row of data.
+     */
+    public function exists($db = null)
+    {
+        return Yii::$app->getDb()->cache(function(Connection $db){
+            return parent::exists($db);
+        });
+    }
 }

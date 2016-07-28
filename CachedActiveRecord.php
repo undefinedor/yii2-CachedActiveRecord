@@ -2,11 +2,10 @@
 namespace undefinedor\yii2;
 
 use Yii;
-use yii\db\ActiveRecord;
 /**
  * CachedActiveRecord is the ActiveRecord class with cache
  */
-class CachedActiveRecord extends ActiveRecord
+trait CachedActiveRecord
 {
     /**
      * @inheritdoc

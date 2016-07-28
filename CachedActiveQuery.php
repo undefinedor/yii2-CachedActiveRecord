@@ -22,10 +22,10 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function one($db = null)
     {
-        $row = Yii::$app->getDb()->cache(function(Connection $db){
+        $row = Yii::$app->getDb()->cache(function (Connection $db) {
             return parent::one($db);
         });
-        if ($row !== false) {
+        if (!empty($row)) {
             $models = $this->populate([$row]);
             return reset($models) ?: null;
         } else {
@@ -43,7 +43,7 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function all($db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db){
+        return Yii::$app->getDb()->cache(function (Connection $db) {
             return parent::all($db);
         });
     }
@@ -58,7 +58,7 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function scalar($db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db){
+        return Yii::$app->getDb()->cache(function (Connection $db) {
             return parent::scalar($db);
         });
     }
@@ -74,8 +74,8 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function count($q = '*', $db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
-            return parent::count($q,$db);
+        return Yii::$app->getDb()->cache(function (Connection $db) use ($q) {
+            return parent::count($q, $db);
         });
     }
 
@@ -89,8 +89,8 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function sum($q, $db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
-            return parent::sum($q,$db);
+        return Yii::$app->getDb()->cache(function (Connection $db) use ($q) {
+            return parent::sum($q, $db);
         });
     }
 
@@ -104,8 +104,8 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function average($q, $db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
-            return parent::average($q,$db);
+        return Yii::$app->getDb()->cache(function (Connection $db) use ($q) {
+            return parent::average($q, $db);
         });
     }
 
@@ -119,8 +119,8 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function min($q, $db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
-            return parent::min($q,$db);
+        return Yii::$app->getDb()->cache(function (Connection $db) use ($q) {
+            return parent::min($q, $db);
         });
     }
 
@@ -134,8 +134,8 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function max($q, $db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db) use($q){
-            return parent::max($q,$db);
+        return Yii::$app->getDb()->cache(function (Connection $db) use ($q) {
+            return parent::max($q, $db);
         });
     }
 
@@ -147,7 +147,7 @@ class CachedActiveQuery extends ActiveQuery
      */
     public function exists($db = null)
     {
-        return Yii::$app->getDb()->cache(function(Connection $db){
+        return Yii::$app->getDb()->cache(function (Connection $db) {
             return parent::exists($db);
         });
     }

@@ -3,7 +3,7 @@
 ### Installation
 The preferred way to install this extension is through [Composer](https://getcomposer.org/download/) .
 ```
-composer require undefinedor/yii2-CachedActiveRecord
+composer require undefinedor/yii2-cached-active-record
 ```
 
 ### Configuration

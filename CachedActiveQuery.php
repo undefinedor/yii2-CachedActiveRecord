@@ -11,6 +11,31 @@ use yii\db\Connection;
 class CachedActiveQuery extends ActiveQuery
 {
     /**
+     * @var int $duration the number of seconds that query results can remain valid in the cache. If this is
+     * not set, the value of [[queryCacheDuration]] will be used instead.
+     */
+    public $duration=null;
+
+
+    /**
+     * @var \yii\caching\Dependency|array $dependency the cache dependency associated with the cached query results.
+     */
+
+    public $dependency=null;
+
+    /**
+     * init
+     */
+    public function init()
+    {
+        parent::init();
+
+        if (is_array($this->dependency)) {
+            $this->dependency = Yii::createObject($this->dependency);
+        }
+    }
+
+    /**
      * When query caching is available return caching,
      * If not,Executes query and generates caching then returns all results .
      * @param Connection $db the DB connection used to create the DB command.
